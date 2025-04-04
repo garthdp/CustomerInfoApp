@@ -23,3 +23,9 @@
 
 ## Delete Page
 ![Screenshot 2025-04-04 142526](https://github.com/user-attachments/assets/324d2c3a-694a-4514-8c6a-21367f1e895e)
+
+## Database 
+
+![Database Design](https://github.com/user-attachments/assets/19007e8a-4a6f-46e7-944b-94cc2e29add6)
+![Database Entries](https://github.com/user-attachments/assets/e0f0c961-9297-4ab5-a0f7-30058f80bf61)
+
