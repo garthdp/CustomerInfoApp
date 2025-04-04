@@ -1,0 +1,98 @@
+﻿@model CustomerListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Customers</h1>
+<form method="get" asp-action="Index">
+    <p>Search name:</p>
+    <input type="text" name="searchName" value="@Model.SearchName" />
+
+    <p>Search VAT Number:</p>
+    <input type="number" name="searchNum" value="@Model.SearchNum" /><br />
+    <button type="submit">Search</button>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-page="@Model.CurrentPage" asp-route-sortDirection="@GetSortDirection()"
+                   asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">
+                    Name @GetSortIcon()
+                </a>
+            </th>
+            <th>Address</th>
+            <th>Telephone Number</th>
+            <th>Contact Person Name</th>
+            <th>Contact Person Email</th>
+            <th>VAT Number</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Customers) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelephoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPersonName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPersonEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vatnumber)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        @if(i == Model.CurrentPage)
+        {
+            <a>@i</a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-route-page="@i" asp-route-sortDirection="@Model.SortDirection"
+               asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">@i</a>
+        }
+    }
+</div>
+
+@functions {
+    public string GetSortDirection()
+    {
+        return Model.SortDirection == "asc" ? "desc" : "asc";
+    }
+
+    public string GetSortIcon()
+    {
+        if (Model.SortDirection == "asc")
+        {
+            return "↑";
+        }
+        else
+        {
+            return "↓";
+        }
+    }
+}
