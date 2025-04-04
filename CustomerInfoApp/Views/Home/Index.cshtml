@@ -21,7 +21,7 @@
         <tr>
             <th>
                 <a asp-action="Index" asp-route-page="@Model.CurrentPage" asp-route-sortDirection="@GetSortDirection()"
-                   asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">
+                asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">
                     Name @GetSortIcon()
                 </a>
             </th>
@@ -73,26 +73,21 @@
         else
         {
             <a asp-action="Index" asp-route-page="@i" asp-route-sortDirection="@Model.SortDirection"
-               asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">@i</a>
+            asp-route-searchName="@Model.SearchName" asp-route-searchNum="@Model.SearchNum">@i</a>
         }
     }
 </div>
 
 @functions {
+    //ternary operator which sets sort direction
     public string GetSortDirection()
     {
         return Model.SortDirection == "asc" ? "desc" : "asc";
     }
 
+    //ternary operator which sets sort direction icon
     public string GetSortIcon()
     {
-        if (Model.SortDirection == "asc")
-        {
-            return "↑";
-        }
-        else
-        {
-            return "↓";
-        }
+        return Model.SortDirection == "asc" ? "↑" : "↓";
     }
 }

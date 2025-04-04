@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace CustomerInfoApp.Models;
 
+//customer info class
 public partial class CustomerInfo
 {
     public int CustomerId { get; set; }

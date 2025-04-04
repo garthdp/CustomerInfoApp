@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomerInfoApp.Data;
 
+// scaffolded dbcontext from local sql database
 public partial class MasterContext : DbContext
 {
     public MasterContext()

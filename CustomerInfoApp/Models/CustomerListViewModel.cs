@@ -2,6 +2,7 @@
 {
     public class CustomerListViewModel
     {
+        // Class which is used to keep track of index/list page information
         public CustomerListViewModel(IEnumerable<CustomerInfo> customers, int currentPage, int totalPages, string sortDirection, string searchName, string searchNum)
         {
             Customers = customers;
